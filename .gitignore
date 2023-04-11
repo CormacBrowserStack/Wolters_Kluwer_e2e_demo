@@ -13,4 +13,4 @@ logs
 browserstack.err
 node_modules/
 logs/
-*.json
+package-lock.json
