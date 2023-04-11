@@ -1,0 +1,51 @@
+
+
+name: Lloyds bank e2e demo
+
+on:
+  push:
+    branches: [ hbdev ]
+  pull_request:
+    branches: [ main ]
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: BrowserStack Env Setup
+        uses: 'browserstack/github-actions/setup-env@master'
+        with:
+          username:  ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Percy
+        run: npm install @percy/cli
+
+      - name: Single test screenshots on Percy
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          BROWSERSTACK_CONFIG_FILE: ./config/browserstack-single.yml
+        run: |
+          npx percy exec -- mvn test -P sample-test
+
+      - name: Parallel testing
+        env:
+          BROWSERSTACK_CONFIG_FILE: ./config/browserstack-parallel.yml
+        run: |
+          mvn test -P sample-test          
