@@ -11,9 +11,9 @@ accessKey: YOUR_ACCESS_KEY
 # ======================
 # The following capabilities are used to set up reporting on BrowserStack:
 # Set 'projectName' to the name of your project. Example, Marketing Website
-projectName: Lloyds Bank trial parallel
+projectName: Lloyds Bank parallel
 # Set `buildName` as the name of the job / testsuite being run
-buildName: e2e demo trial parallel
+buildName: e2e parallel
 # `buildIdentifier` is a unique id to differentiate every execution that gets appended to
 # buildName. Choose your buildIdentifier format from the available expressions:
 # ${BUILD_NUMBER} (Default): Generates an incremental counter with every execution
