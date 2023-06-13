@@ -23,7 +23,7 @@ public class WoltersKluwerTest extends SeleniumTest {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         // Check the title
-        // Assert.assertTrue(driver.getTitle().matches("Wolters Kluwer - Combining Domain Expertise With Advanced Technology | Wolters Kluwer"));        
+        Assert.assertTrue(driver.getTitle().matches("Wolters Kluwer - Combining Domain Expertise With Advanced Technology | Wolters Kluwer"));        
 
         // Click on cookie accept button if it comes up
         try {
