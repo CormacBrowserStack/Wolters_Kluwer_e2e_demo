@@ -19,7 +19,7 @@ public class WoltersKluwerTest extends SeleniumTest {
     public void navigation_test() throws Exception {
         // navigate to Wolters Kluwer Homepage
         driver.get("https://www.wolterskluwer.com/en");
-        // percy.snapshot("Home page");
+        percy.snapshot("Home page");
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         // Check the title
@@ -35,7 +35,7 @@ public class WoltersKluwerTest extends SeleniumTest {
 
         // Click on the Health section
         driver.findElement(By.cssSelector("li:nth-of-type(1) > .ow-nav-level-1-trigger.wk-button.wk-button-text")).click();
-        // percy.snapshot("Branch finder page");
+        percy.snapshot("Branch finder page");
 
         // Click on "View all solutions"
         driver.findElement(By.cssSelector("li:nth-of-type(1) .ow-primary-nav-items > div:nth-of-type(1) > .ow-primary-nav-content > .ow-nav-level-2-view-all-link > span:nth-of-type(1)")).click();
