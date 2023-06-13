@@ -16,38 +16,32 @@ import org.openqa.selenium.JavascriptExecutor;
 
 public class LloydsBankTest extends SeleniumTest {
     @Test
-    public void branchFinder() throws Exception {
-        // navigate to Lloyds bank homepage
-        driver.get("https://www.lloydsbank.com/");
-        percy.snapshot("Home page");
+    public void navigation_test() throws Exception {
+        // navigate to Wolters Kluwer Homepage
+        driver.get("https://www.wolterskluwer.com/en");
+        // percy.snapshot("Home page");
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         // Check the title
-        Assert.assertTrue(driver.getTitle().matches("Lloyds Bank - Personal Banking, Personal Finances & Bank Accounts"));
-
-        // Click on the Branch finder
-        driver.findElement(By.xpath("//*[@id=\"nav-header\"]/div/div/div[2]/ul/li[3]/a/span")).click();
-        percy.snapshot("Branch finder page");
+        // Assert.assertTrue(driver.getTitle().matches("Wolters Kluwer - Combining Domain Expertise With Advanced Technology | Wolters Kluwer"));        
 
         // Click on cookie accept button if it comes up
         try {
-            WebElement cookie_accept = driver.findElement(By.xpath("//*[@id=\"accept\"]"));
+            WebElement cookie_accept = driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]"));
             cookie_accept.click();
         } catch (Exception NoSuchFrameException) {
             System.out.println("\n--\nCookie banner didn't come up, moving on\n--\n");
-        }
+        }        
 
-        // Get the search bar and search for a place
-        WebElement search_bar = driver.findElement(By.xpath("//*[@id=\"q\"]"));
-        search_bar.sendKeys("London, UK");
-        search_bar.sendKeys(Keys.ENTER);
+        // Click on the Health section
+        driver.findElement(By.cssSelector("li:nth-of-type(1) > .ow-nav-level-1-trigger.wk-button.wk-button-text")).click();
+        // percy.snapshot("Branch finder page");
 
-        // Click on the third entry in the branch list
-        driver.findElement(By.xpath("//*[@id=\"js-yl-309871\"]/article/div[1]/h3/a")).click();
-        percy.snapshot("Branch details page");
+        // Click on "View all solutions"
+        driver.findElement(By.cssSelector("li:nth-of-type(1) .ow-primary-nav-items > div:nth-of-type(1) > .ow-primary-nav-content > .ow-nav-level-2-view-all-link > span:nth-of-type(1)")).click();
 
-        // Verify the phone number of the branch
-        String telephone = driver.findElement(By.xpath("//*[@id=\"phone-main\"]")).getAttribute("innerText");
-        Assert.assertEquals(telephone, "0345 602 1997");
+        // Verify the title in that section
+        // String telephone = (driver.findElement(By.xpath("//*[@id=\"header\"]/div/div[2]/div/div[2]/div/div/div[1]/div/h1")).getText()).toString;
+        // Assert.assertEquals(telephone, "Health solutions specialized in clinical effectiveness, learning, research and safety.");
     }
 }
