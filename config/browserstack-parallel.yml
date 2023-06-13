@@ -33,11 +33,7 @@ platforms:
   - os: OS X
     osVersion: Big Sur
     browserName: Chrome
-    browserVersion: latest
-  - os: OS X
-    osVersion: Ventura
-    browserName: Safari
-    browserVersion: latest    
+    browserVersion: latest 
   - os: Windows
     osVersion: 10
     browserName: Edge
@@ -50,9 +46,6 @@ platforms:
     browserName: chrome # Try 'samsung' for Samsung browser
     deviceOrientation: landscape
     osVersion: 12.0
-  - deviceName: iPad Pro 12.9 2022
-    osVersion: 16
-    deviceOrientation: landscape
 
     
 # =======================
