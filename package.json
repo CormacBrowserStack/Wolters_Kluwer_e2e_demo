@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@percy/cli": "^1.23.0"
+    "@percy/cli": "^1.26.0"
   },
   "dependencies": {
     "@maxmattone/percysync": "^1.1.0"
