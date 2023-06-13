@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
 
-public class LloydsBankTest extends SeleniumTest {
+public class WoltersKluwerTest extends SeleniumTest {
     @Test
     public void navigation_test() throws Exception {
         // navigate to Wolters Kluwer Homepage
